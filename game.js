@@ -186,6 +186,7 @@ function handleButton(btn) {
                     if (params.get("mode") == "daily") {
                         setCookie("lastPuzzleGuesses", equations, 399);
                         setCookie("lastPuzzleDate", new Date().toISOString().substring(0, 10).replaceAll("-",""), 399);
+                        setCookie(equations + "games", (Number(getCookie(equations + "games")) + 1), 399);
                     }
                     shareTitle.innerHTML = "You Won!";
                     shareText.innerHTML = generateShareText();
