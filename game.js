@@ -87,7 +87,7 @@ if (getCookie("operationsInit") != "true") {
     setCookie("lastPuzzleGuesses", "0", 399);
 }
 
-var gamesGraph = [getCookie("1games"),getCookie("2games"),getCookie("3games"),getCookie("4games"),getCookie("5games"),getCookie("6games"),getCookie("7games"),getCookie("8games"),getCookie("9games")];
+var gamesGraph = [Number(getCookie("1games")),Number(getCookie("2games")),Number(getCookie("3games")),Number(getCookie("4games")),Number(getCookie("5games")),Number(getCookie("6games")),Number(getCookie("7games")),Number(getCookie("8games")),Number(getCookie("9games"))];
 
 function generateShareText(isReload) {
     if (isReload) {
