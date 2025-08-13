@@ -104,7 +104,7 @@ if (params.get("mode") == "daily") {
         gameDone = true;
         typeHereText.hidden = false;
         typeHereText.innerHTML = "Solved in " + getCookie("lastPuzzleGuesses");
-        typeHereText.setAttribute("class", "title is-2 green-text";
+        typeHereText.setAttribute("class", "title is-2 green-text");
         shareTitle.innerHTML = "You Won!";
         shareText.innerHTML = generateShareText(true);
         setTimeout(showShare, 1000);
