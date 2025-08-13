@@ -146,13 +146,11 @@ function hideHelp() {
 function shareGame() {
     if (params.get("mode") == "daily") {
         navigator.share({
-            title: "Operations Game #" + (getDaysSince("2025-8-12") + 1),
-            text: shareText.innerHTML
+            text: "Operations Game #" + (getDaysSince("2025-8-12") + 1) + "\n\n" + shareText.innerHTML
         });
     } else {
         navigator.share({
-            title: "Operations Game (Unlimited Mode)",
-            text: shareText.innerHTML
+            text: "Operations Game (Unlimited Mode)\n\n" + shareText.innerHTML
         });
     }
 }
