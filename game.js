@@ -173,6 +173,7 @@ function handleButton(btn) {
                 customNumbers[equations] = eval(typedEquation.replaceAll("×","*").replaceAll("÷","/"));
                 equationsList[equations] = typedEquation + "=" + eval(typedEquation.replaceAll("×","*").replaceAll("÷","/"));
                 typedEquation = "";
+                typedEquationList = [];
                 inputSection = 1;
                 equations += 1;
                 if (customNumbers.includes(goal)) {
@@ -205,11 +206,13 @@ function handleButton(btn) {
         } else if (btn.startsWith("c")) {
             if (inputSection == 1 || inputSection == 3) {
                 typedEquation += customNumbers[btn.replace("c", "")-1];
+                typedEquationList.push(customNumbers[btn.replace("c", "")-1]);
                 inputSection += 1;
             }
         } else {
             if (inputSection == 1 || inputSection == 3) {
                 typedEquation += btn.replace("n", "");
+                typedEquationList.push(btn.replace("n", ""));
                 inputSection += 1;
             }
         }
