@@ -72,11 +72,26 @@ var goal = 0;
 var inputSection = 1;
 var gameDone = false;
 
+if (getCookie("operationsInit") != "true") {
+    setCookie("operationsInit", "true", 399);
+    setCookie("1games", 0, 399);
+    setCookie("2games", 0, 399);
+    setCookie("3games", 0, 399);
+    setCookie("4games", 0, 399);
+    setCookie("5games", 0, 399);
+    setCookie("6games", 0, 399);
+    setCookie("7games", 0, 399);
+    setCookie("8games", 0, 399);
+    setCookie("9games", 0, 399);
+    setCookie("lastPuzzleDate", "0", 399);
+}
+
 var gamesGraph = [getCookie("1games"),getCookie("2games"),getCookie("3games"),getCookie("4games"),getCookie("5games"),getCookie("6games"),getCookie("7games"),getCookie("8games"),getCookie("9games")];
 
 if (params.get("mode") == "daily") {
     goal = generateDailyRandomNumber(10, 999);
     modeSelector.value = "Daily";
+    if (getCookie("lastPuzzleDate"))
 } else {
     goal = getRandomInt(10, 999);
     modeSelector.value = "Unlimited";
@@ -223,7 +238,7 @@ function updateText() {
       labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
       datasets: [{
         label: '# of Puzzles',
-        data: [0, 1, 0, 2, 5, 4, 0, 0, 0],
+        data: gamesGraph,
         borderWidth: 1
       }]
     },
