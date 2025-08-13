@@ -84,14 +84,31 @@ if (getCookie("operationsInit") != "true") {
     setCookie("8games", 0, 399);
     setCookie("9games", 0, 399);
     setCookie("lastPuzzleDate", "0", 399);
+    setCookie("lastPuzzleGuesses", "0", 399);
 }
 
 var gamesGraph = [getCookie("1games"),getCookie("2games"),getCookie("3games"),getCookie("4games"),getCookie("5games"),getCookie("6games"),getCookie("7games"),getCookie("8games"),getCookie("9games")];
 
+function generateShareText(isReload) {
+    if (isReload) {
+        return "Solved in " + getCookie("lastPuzzleGuesses") + " equation(s)!\n" + ("&#11035;").repeat(getCookie("lastPuzzleGuesses")-1) + "&#129001;";
+    } else {
+        return "Solved in " + equations + " equation(s)!\n" + ("&#11035;").repeat(equations-1) + "&#129001;";
+    }
+}
+
 if (params.get("mode") == "daily") {
     goal = generateDailyRandomNumber(10, 999);
     modeSelector.value = "Daily";
-    if (getCookie("lastPuzzleDate"))
+    if (getCookie("lastPuzzleDate") == new Date().toISOString().substring(0, 10).replaceAll("-","")) {
+        gameDone = true;
+        typeHereText.hidden = false;
+        typeHereText.innerHTML = "Solved in " + getCookie("lastPuzzleGuesses");
+        typeHereText.setAttribute("class", "title is-2 green-text";
+        shareTitle.innerHTML = "You Won!";
+        shareText.innerHTML = generateShareText(true);
+        setTimeout(showShare, 1000);
+    }
 } else {
     goal = getRandomInt(10, 999);
     modeSelector.value = "Unlimited";
@@ -140,10 +157,6 @@ function shareGame() {
     }
 }
 
-function generateShareText() {
-    return "Solved in " + equations + " equation(s)!\n" + ("&#11035;").repeat(equations-1) + "&#129001;";
-}
-
 function handleButton(btn) {
     if (gameDone == false || btn == "help" || btn == "restart") {
         if (btn == "back") {
@@ -170,6 +183,10 @@ function handleButton(btn) {
                     document.getElementById("c" + equations).setAttribute("class", "button keypadBtn is-success");
                     document.getElementById("eqBox" + equations).setAttribute("class", "box equationBox green-bg");
                     gameDone = true;
+                    if (params.get("mode") == "daily") {
+                        setCookie("lastPuzzleGuesses", equations, 399);
+                        setCookie("lastPuzzleDate", new Date().toISOString().substring(0, 10).replaceAll("-",""), 399);
+                    }
                     shareTitle.innerHTML = "You Won!";
                     shareText.innerHTML = generateShareText();
                     //shareIcon.setAttribute("src", "stats_icon.svg");
