@@ -1,0 +1,268 @@
+<title>Operations</title>
+<link href="bulma.min.css" rel="stylesheet">
+<script src="chart.js"></script>
+<script src="dailyrandom.js"></script>
+
+<style>
+body {
+    background: #f2f2f2;
+}
+.white-text {
+    color: white;
+}
+.equationBox {
+    width: 30%;
+    height: 10%;
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold;
+}
+.keypadBtn {
+  width: 60px;
+  height: 60px;
+}
+.keypadBtnLarge {
+  width: 125px;
+  height: 60px;
+}
+.gray-text {
+  color: #636363;
+}
+.green-text {
+  color: rgb(109,196,146);
+}
+.green-bg {
+  background: rgb(109,196,146);
+}
+.blue-text {
+  color: rgb(95,206,179);
+}
+.red-text {
+  color: rgb(237,112,134);
+}
+.shareTextBg {
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+}
+/*.topEquation {
+  
+}*/
+</style>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <span class="navbar-item">
+      <b>Operations</b>
+    </span>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <!--<a class="navbar-item">
+        Item1
+      </a>
+
+      <a class="navbar-item">
+        Item2
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Mode
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item is-selected white-text">
+            Daily
+          </a>
+          <a class="navbar-item">
+            Unlimited
+          </a>
+        </div>
+      </div>-->
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <span class="navbar-item" id="goalText"><b>Loading...</b></span>
+          <a class="button is-light" onclick="showShare()">
+            <img id="shareIcon" src="stats_icon.svg">
+          </a>
+          <a class="button is-light" onclick="showSettings()">
+            <img src="settings_icon.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<center>
+    <br>
+    <h2 class="title is-2 gray-text" id="typeHereText">Type here</h2>
+    <h2 class="title is-2" id="typingElement"></h2>
+
+    <div class="box equationBox" id="eqBox1"></div>
+    <div class="box equationBox" id="eqBox2"></div>
+    <div class="box equationBox" id="eqBox3"></div>
+    <br>
+    <div class="box equationBox" id="eqBox4"></div>
+    <div class="box equationBox" id="eqBox5"></div>
+    <div class="box equationBox" id="eqBox6"></div>
+    <br>
+    <div class="box equationBox" id="eqBox7"></div>
+    <div class="box equationBox" id="eqBox8"></div>
+    <div class="box equationBox" id="eqBox9"></div>
+
+    <br><br>
+
+    <button class="button keypadBtn" onclick="handleButton('n1')">1</button>
+    <button class="button keypadBtn" onclick="handleButton('n2')">2</button>
+    <button class="button keypadBtn" onclick="handleButton('n3')">3</button>
+    <button class="button keypadBtn" id="c1" onclick="handleButton('c1')"></button>
+    <button class="button keypadBtn" id="c2" onclick="handleButton('c2')"></button>
+    <button class="button keypadBtn" id="c3" onclick="handleButton('c3')"></button>
+    <button class="button keypadBtn" onclick="handleButton('+')">+</button>
+    <button class="button keypadBtn" onclick="handleButton('-')">-</button>
+    <button class="button keypadBtn is-warning" onclick="handleButton('back')">
+      <img src="backspace_icon.svg">
+    </button>
+    <br>
+    <button class="button keypadBtn" onclick="handleButton('n4')">4</button>
+    <button class="button keypadBtn" onclick="handleButton('n5')">5</button>
+    <button class="button keypadBtn" onclick="handleButton('n6')">6</button>
+    <button class="button keypadBtn" id="c4" onclick="handleButton('c4')"></button>
+    <button class="button keypadBtn" id="c5" onclick="handleButton('c5')"></button>
+    <button class="button keypadBtn" id="c6" onclick="handleButton('c6')"></button>
+    <button class="button keypadBtn" onclick="handleButton('×')">×</button>
+    <button class="button keypadBtn" onclick="handleButton('÷')">÷</button>
+    <button class="button keypadBtn is-success" onclick="handleButton('done')">
+      <img src="checkmark_icon.svg">
+    </button>
+    <br>
+    <button class="button keypadBtn" onclick="handleButton('n7')">7</button>
+    <button class="button keypadBtn" onclick="handleButton('n8')">8</button>
+    <button class="button keypadBtn" onclick="handleButton('n9')">9</button>
+    <button class="button keypadBtn" id="c7" onclick="handleButton('c7')"></button>
+    <button class="button keypadBtn" id="c8" onclick="handleButton('c8')"></button>
+    <button class="button keypadBtn" id="c9" onclick="handleButton('c9')"></button>
+    <button class="button keypadBtnLarge" onclick="handleButton('help')">How to Play</button>
+    <button class="button keypadBtn is-danger" onclick="handleButton('restart')">
+      <img src="reload_icon.svg">
+    </button>
+    <br>
+
+</center>
+
+<div class="modal" id="settingsMenu">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+        <center>
+            <h3 class="title is-3">Settings</h3>
+            <span>Mode: </span>
+            <div class="select">
+                <select id="modeSelector">
+                    <option>Daily</option>
+                    <option selected>Unlimited</option>
+                </select>
+            </div>
+            <br><br>
+            <span>Theme: </span>
+            <div class="select">
+                <select id="themeSelector">
+                    <option disabled>System Default</option>
+                    <option selected>Light</option>
+                    <option disabled>Dark</option>
+                </select>
+            </div>
+            <br><br>
+            <button class="button is-primary" onclick="hideSettings()">Done</button>
+        </center>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" onclick="hideSettings()"></button>
+</div>
+
+<div class="modal" id="shareMenu">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+        <center>
+            <h3 class="title is-3" id="shareTitle">Stats</h3>
+            <span id="shareText" class="shareTextBg">Check out this number game.</span>
+            <br><br>
+            <div style="height:300px;">
+              <canvas id="myChart"></canvas>
+            </div>
+
+            <!--<label id="prog1l" for="prog1">Solved in 1 - 0 puzzles</label>
+            <progress value="1" max="2" id="prog1" class="progress is-small"></progress>
+            <label id="prog2l" for="prog2">Solved in 2 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog2" class="progress is-small"></progress>
+            <label id="prog3l" for="prog3">Solved in 3 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog3" class="progress is-small"></progress>
+            <label id="prog4l" for="prog4">Solved in 4 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog4" class="progress is-small"></progress>
+            <label id="prog5l" for="prog5">Solved in 5 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog5" class="progress is-small"></progress>
+            <label id="prog6l" for="prog6">Solved in 6 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog6" class="progress is-small"></progress>
+            <label id="prog7l" for="prog7">Solved in 7 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog7" class="progress is-small"></progress>
+            <label id="prog8l" for="prog8">Solved in 8 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog8" class="progress is-small"></progress>
+            <label id="prog9l" for="prog9">Solved in 9 - 0 puzzles</label>
+            <progress value="0" max="0" id="prog9" class="progress is-small"></progress>-->
+
+
+            <br><br>
+            <button class="button" onclick="shareGame()">Share</button>
+            <button class="button is-primary" onclick="hideShare()">Close</button>
+        </center>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" onclick="hideShare()"></button>
+</div>
+
+<div class="modal" id="helpMenu">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+        <center>
+            <h3 class="title is-3">Help</h3>
+            <span>You are trying to achieve the goal number.</span>
+            <br>
+            <span>You may only use two-term equations with the numbers 1-9 and results of previous equations.</span>
+            <br>
+            <span>The only operators you can use are addition, subtraction, multiplication, and division.</span>
+            <br><br>
+            <span class="green-text"><b>Good Examples:</b></span>
+            <br>
+            <span>2*5=10</span>
+            <br>
+            <span>10+9=19</span>
+            <br>
+            <span class="red-text"><b>Bad Examples:</b></span>
+            <br>
+            <span>20+14=34: This equation uses two-digit numbers not results of previous equations</span>
+            <br>
+            <span>2^5=32: This equation uses a non-allowed operator</span>
+            <br><br>
+            <button class="button is-primary" onclick="hideHelp()">Close</button>
+        </center>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" onclick="hideHelp()"></button>
+</div>
+
+<script src="game.js"></script>
