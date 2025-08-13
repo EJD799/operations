@@ -68,6 +68,7 @@ var customNumbers = ["", "", "", "", "", "", "", "", ""];
 var equations = 0;
 var equationsList = ["", "", "", "", "", "", "", "", ""];
 var typedEquation = "";
+var typedEquationList = [];
 var goal = 0;
 var inputSection = 1;
 var gameDone = false;
