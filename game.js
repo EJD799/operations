@@ -72,6 +72,8 @@ var goal = 0;
 var inputSection = 1;
 var gameDone = false;
 
+var gamesGraph = [getCookie("1games"),getCookie("2games"),getCookie("3games"),getCookie("4games"),getCookie("5games"),getCookie("6games"),getCookie("7games"),getCookie("8games"),getCookie("9games")];
+
 if (params.get("mode") == "daily") {
     goal = generateDailyRandomNumber(10, 999);
     modeSelector.value = "Daily";
