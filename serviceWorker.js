@@ -117,15 +117,21 @@ self.addEventListener("install", (event) => {
       .open("v1")
       .then((cache) =>
         cache.addAll([
-          "/",
-          "/index.html",
-          "/style.css",
-          "/app.js",
-          "/image-list.js",
-          "/star-wars-logo.jpg",
-          "/img/img1.jpg",
-          "/img/img2.jpg",
-          "/img/img3.jpg",
+          "/operations/",
+          "/operations/backspace_icon.svg",
+          "/operations/bulma.min.css",
+          "/operations/chart.js",
+          "/operations/checkmark_icon.svg",
+          "/operations/dailyrandom.js",
+          "/operations/game.js",
+          "/operations/icon.png",
+          "/operations/index.html",
+          "/operations/manifest.json",
+          "/operations/reload_icon.svg",
+          "/operations/serviceWorker.js",
+          "/operations/settings_icon.svg",
+          "/operations/share_icon.svg",
+          "/operations/stats_icon.svg"
         ]),
       ),
   );
@@ -151,7 +157,7 @@ self.addEventListener("fetch", (event) => {
             });
             return response;
           })
-          .catch(() => caches.match("/index.html"));
+          .catch(() => caches.match("/operations/index.html"));
       }
     }),
   );
