@@ -269,3 +269,8 @@ function updateText() {
       }
     }
   });
+
+if ("serviceWorker" in navigator) {
+  // register service worker
+  navigator.serviceWorker.register("serviceWorker.js");
+}
