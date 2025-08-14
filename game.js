@@ -147,7 +147,7 @@ function hideHelp() {
 function shareGame() {
     if (params.get("mode") == "daily") {
         navigator.share({
-            text: "Operations Game #" + (getDaysSince("2025-8-12") + 1) + "\n\n" + shareText.innerHTML
+            text: "Operations Game #" + (getDaysSince("2025-08-12") + 1) + "\n\n" + shareText.innerHTML
         });
     } else {
         navigator.share({
@@ -199,6 +199,7 @@ function handleButton(btn) {
         } else if (btn == "+" || btn == "-" || btn == "×" || btn == "÷") {
             if (inputSection == 2) {
                 typedEquation += btn;
+                typedEquationList.push("btn");
                 inputSection = 3;
             }
         } else if (btn == "help") {
