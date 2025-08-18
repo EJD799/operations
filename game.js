@@ -101,7 +101,7 @@ function generateShareText(isReload) {
 if (params.get("mode") == "daily") {
     goal = generateDailyRandomNumber(10, 999);
     modeSelector.value = "Daily";
-    if (getCookie("lastPuzzleDate") == new Date().setHours(0, 0, 0, 0).toISOString().substring(0, 10).replaceAll("-","")) {
+    if (getCookie("lastPuzzleDate") == new Date().toISOString().substring(0, 10).replaceAll("-","")) {
         gameDone = true;
         typeHereText.hidden = false;
         typeHereText.innerHTML = "Solved in " + getCookie("lastPuzzleGuesses");
