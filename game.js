@@ -293,10 +293,10 @@ window.addEventListener('keydown', function(event) {
         handleButton("-");
     }
     if (event.key == "*") {
-        handleButton("*");
+        handleButton("×");
     }
     if (event.key == "/") {
-        handleButton("/");
+        handleButton("÷");
     }
     if (event.key == "1") {
         handleButton("1");
