@@ -278,7 +278,7 @@ function createGraph() {
 }
 createGraph();
 
-if ("serviceWorker" in navigator) {
+/*if ("serviceWorker" in navigator) {
   // register service worker
   navigator.serviceWorker.register("serviceWorker.js");
-}
+}*/
