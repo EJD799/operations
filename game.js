@@ -280,6 +280,12 @@ createGraph();
 
 window.addEventListener('keydown', function(event) {
     console.log(event.key);
+    if (event.key == "Backspace") {
+        handleButton("back");
+    }
+    if (event.key == "Enter") {
+        handleButton("done");
+    }
 });
 
 /*if ("serviceWorker" in navigator) {
