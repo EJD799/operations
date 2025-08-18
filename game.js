@@ -278,6 +278,10 @@ function createGraph() {
 }
 createGraph();
 
+window.addEventListener('keydown', function(event) {
+    console.log(event.key);
+});
+
 /*if ("serviceWorker" in navigator) {
   // register service worker
   navigator.serviceWorker.register("serviceWorker.js");
