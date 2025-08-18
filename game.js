@@ -190,6 +190,9 @@ function handleButton(btn) {
                         setCookie("lastPuzzleDate", new Date().toISOString().substring(0, 10).replaceAll("-",""), 399);
                     }
                     setCookie(equations + "games", (Number(getCookie(equations + "games")) + 1), 399);
+                    gamesGraph[equations-1] = getCookie(equations + "games");
+                    equationsChart.destroy();
+                    createGraph();
                     shareTitle.innerHTML = "You Won!";
                     shareText.innerHTML = generateShareText();
                     //shareIcon.setAttribute("src", "stats_icon.svg");
@@ -255,22 +258,25 @@ function updateText() {
 
   const ctx = document.getElementById('myChart');
 
-  equationsChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      datasets: [{
-        label: '# of Puzzles',
-        data: gamesGraph,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      scales: {
-      }
-    }
-  });
+function createGraph() {
+    equationsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            datasets: [{
+                label: '# of Puzzles',
+                data: gamesGraph,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+            }
+        }
+    });
+}
+createGraph();
 
 if ("serviceWorker" in navigator) {
   // register service worker
