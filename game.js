@@ -286,6 +286,72 @@ window.addEventListener('keydown', function(event) {
     if (event.key == "Enter") {
         handleButton("done");
     }
+    if (event.key == "+") {
+        handleButton("+");
+    }
+    if (event.key == "-") {
+        handleButton("-");
+    }
+    if (event.key == "*") {
+        handleButton("*");
+    }
+    if (event.key == "/") {
+        handleButton("/");
+    }
+    if (event.key == "1") {
+        handleButton("1");
+    }
+    if (event.key == "2") {
+        handleButton("2");
+    }
+    if (event.key == "3") {
+        handleButton("3");
+    }
+    if (event.key == "4") {
+        handleButton("4");
+    }
+    if (event.key == "5") {
+        handleButton("5");
+    }
+    if (event.key == "6") {
+        handleButton("6");
+    }
+    if (event.key == "7") {
+        handleButton("7");
+    }
+    if (event.key == "8") {
+        handleButton("8");
+    }
+    if (event.key == "9") {
+        handleButton("9");
+    }
+    if (event.key == "q") {
+        handleButton("c1");
+    }
+    if (event.key == "w") {
+        handleButton("c2");
+    }
+    if (event.key == "e") {
+        handleButton("c3");
+    }
+    if (event.key == "r") {
+        handleButton("c4");
+    }
+    if (event.key == "t") {
+        handleButton("c5");
+    }
+    if (event.key == "y") {
+        handleButton("c6");
+    }
+    if (event.key == "u") {
+        handleButton("c7");
+    }
+    if (event.key == "i") {
+        handleButton("c8");
+    }
+    if (event.key == "o") {
+        handleButton("c9");
+    }
 });
 
 /*if ("serviceWorker" in navigator) {
