@@ -73,6 +73,8 @@ var goal = 0;
 var inputSection = 1;
 var gameDone = false;
 
+var equationsChart;
+
 if (getCookie("operationsInit") != "true") {
     setCookie("operationsInit", "true", 399);
     setCookie("1games", 0, 399);
@@ -253,7 +255,7 @@ function updateText() {
 
   const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
+  equationsChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
