@@ -149,11 +149,11 @@ function hideHelp() {
 function shareGame() {
     if (params.get("mode") == "daily") {
         navigator.share({
-            text: "Operations Game #" + (getDaysSince("2025-08-12") + 1) + " (Beta)\nhttps://ejd799.github.io/operations/\n\n" + shareText.innerHTML
+            text: "Operations Game #" + (getDaysSince("2025-08-12") + 1) + "\nhttps://ejd799.github.io/operations/\n\n" + shareText.innerHTML
         });
     } else {
         navigator.share({
-            text: "Operations Game (Beta) (Unlimited Mode)\n\n" + shareText.innerHTML
+            text: "Operations Game (Unlimited Mode)\n\n" + shareText.innerHTML
         });
     }
 }
