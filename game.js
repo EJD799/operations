@@ -162,7 +162,8 @@ function handleButton(btn) {
     if (gameDone == false || btn == "help" || btn == "restart") {
         if (btn == "back") {
             if (typedEquation != "") {
-                typedEquation = typedEquation.slice(0, -1);
+                typedEquation = typedEquation.slice(0, 0-typedEquationList[typedEquationList.length].length);
+                typedEquationList.pop();
                 inputSection += -1;
             } else {
                 equations += -1;
