@@ -162,7 +162,7 @@ function handleButton(btn) {
     if (gameDone == false || btn == "help" || btn == "restart") {
         if (btn == "back") {
             if (typedEquation != "") {
-                typedEquation = typedEquation.slice(0, 0-typedEquationList[typedEquationList.length-1].length);
+                typedEquation = typedEquation.slice(0, 0-typedEquationList[typedEquationList.length-1].toString().length);
                 typedEquationList.pop();
                 inputSection += -1;
             } else {
@@ -205,7 +205,7 @@ function handleButton(btn) {
         } else if (btn == "+" || btn == "-" || btn == "×" || btn == "÷") {
             if (inputSection == 2) {
                 typedEquation += btn;
-                typedEquationList.push("btn");
+                typedEquationList.push(btn);
                 inputSection = 3;
             }
         } else if (btn == "help") {
