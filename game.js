@@ -74,6 +74,7 @@ var inputSection = 1;
 var gameDone = false;
 
 var equationsChart;
+var theme = "";
 
 if (getCookie("operationsInit") != "true") {
     setCookie("operationsInit", "true", 399);
@@ -88,6 +89,7 @@ if (getCookie("operationsInit") != "true") {
     setCookie("9games", 0, 399);
     setCookie("lastPuzzleDate", "0", 399);
     setCookie("lastPuzzleGuesses", "0", 399);
+    setCookie("theme", "default", 300);
 }
 
 var gamesGraph = [Number(getCookie("1games")),Number(getCookie("2games")),Number(getCookie("3games")),Number(getCookie("4games")),Number(getCookie("5games")),Number(getCookie("6games")),Number(getCookie("7games")),Number(getCookie("8games")),Number(getCookie("9games"))];
@@ -133,6 +135,10 @@ function hideSettings() {
             setURLParam("mode", "daily");
         }
     }
+    if (getCookie("theme") != themeSelector.value) {
+        setCookie("theme", themeSelector.value, 300);
+        initializeTheme();
+    }
 }
 function showShare() {
     shareMenu.setAttribute("class", "modal is-active");
@@ -156,6 +162,19 @@ function shareGame() {
             text: "Operations Game (Unlimited Mode)\n\n" + shareText.innerHTML
         });
     }
+}
+
+function initializeTheme() {
+    if (getCookie("theme") == "default") {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+    } else {
+        theme = getCookie("theme");
+    }
+    console.log("theme");
 }
 
 function handleButton(btn) {
@@ -354,6 +373,8 @@ window.addEventListener('keydown', function(event) {
         handleButton("c9");
     }
 });
+
+initializeTheme();
 
 /*if ("serviceWorker" in navigator) {
   // register service worker
