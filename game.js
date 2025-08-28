@@ -75,6 +75,7 @@ var gameDone = false;
 
 var equationsChart;
 var theme = "";
+themeSelector.value = getCookie("theme");
 
 if (getCookie("operationsInit") != "true") {
     setCookie("operationsInit", "true", 399);
