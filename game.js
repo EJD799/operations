@@ -174,7 +174,7 @@ function initializeTheme() {
     } else {
         theme = getCookie("theme");
     }
-    console.log("theme");
+    console.log(theme);
 }
 
 function handleButton(btn) {
