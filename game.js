@@ -297,6 +297,12 @@ function createGraph() {
         }
     });
 }
+
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    Chart.defaults.color = "#ffffff";
+} else {
+    Chart.defaults.color = "#666666";
+}
 createGraph();
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
@@ -305,6 +311,8 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
     } else {
         Chart.defaults.color = "#666666";
     }
+    equationsChart.destroy();
+    createGraph();
 });
 
 window.addEventListener('keydown', function(event) {
