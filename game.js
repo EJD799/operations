@@ -299,6 +299,14 @@ function createGraph() {
 }
 createGraph();
 
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    if (event.matches) {
+        Chart.defaults.color = "#ffffff";
+    } else {
+        Chart.default.color = "#666666";
+    }
+});
+
 window.addEventListener('keydown', function(event) {
     console.log(event.key);
     if (event.key == "Backspace") {
