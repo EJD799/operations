@@ -75,7 +75,7 @@ var gameDone = false;
 
 var equationsChart;
 var theme = "";
-themeSelector.value = getCookie("theme");
+//themeSelector.value = getCookie("theme");
 
 if (getCookie("operationsInit") != "true") {
     setCookie("operationsInit", "true", 399);
@@ -136,10 +136,10 @@ function hideSettings() {
             setURLParam("mode", "daily");
         }
     }
-    if (getCookie("theme") != themeSelector.value) {
+    /*if (getCookie("theme") != themeSelector.value) {
         setCookie("theme", themeSelector.value, 300);
         initializeTheme();
-    }
+    }*/
 }
 function showShare() {
     shareMenu.setAttribute("class", "modal is-active");
