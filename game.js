@@ -301,9 +301,9 @@ createGraph();
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
     if (event.matches) {
-        equationsChart.defaults.color = "#ffffff";
+        Chart.defaults.color = "#ffffff";
     } else {
-        equationsChart.default.color = "#666666";
+        Chart.defaults.color = "#666666";
     }
 });
 
