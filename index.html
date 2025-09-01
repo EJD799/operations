@@ -32,6 +32,9 @@ body {
     #myChart {
       color: white !important;
     }
+    .navbar_icon {
+      filter: brightness(1000) !important;
+    }
 }
 .white-text {
     color: white;
@@ -85,10 +88,10 @@ body {
         <div class="buttons">
           <span class="navbar-item" id="goalText"><b>Loading...</b></span>
           <a class="button" onclick="showShare()">
-            <img id="shareIcon" src="stats_icon.svg">
+            <img id="shareIcon" class="navbar_icon" src="stats_icon.svg">
           </a>
           <a class="button" onclick="showSettings()">
-            <img src="settings_icon.svg">
+            <img class="navbar_icon" src="settings_icon.svg">
           </a>
         </div>
     </div>
@@ -206,7 +209,7 @@ body {
     <div class="box">
         <center>
             <h3 class="title is-3">Settings</h3>
-            <span>Operations v1.0.9</span><br><br>
+            <span>Operations v1.0.10</span><br><br>
             <span>Mode: </span>
             <div class="select">
                 <select id="modeSelector">
